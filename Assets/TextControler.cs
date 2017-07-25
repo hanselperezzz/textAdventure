@@ -19,7 +19,7 @@ public class TextControler : MonoBehaviour {
 	void Update () {
 		print (myState);
 		if (myState == States.cell)					{state_cell();}
-		else if (myState == States.sheets_0)		{state_sheets_0();}
+		// else if (myState == States.sheets_0)		{state_sheets_0();}
 //		else if (myState == States.sheets_1)		{state_sheets_1();}
 //		else if (myState == States.lock_0)			{state_lock_0();}
 //		else if (myState == States.lock_1)			{state_lock_1();}
@@ -50,7 +50,7 @@ public class TextControler : MonoBehaviour {
 			myState = States.cell;
 		}
 	}
-//
+
 //	void state_lock_0 () {
 //		text.text = "Lock!";
 //		if (Input.GetKeyDown(KeyCode.L)) {
