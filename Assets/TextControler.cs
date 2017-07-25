@@ -22,7 +22,7 @@ public class TextControler : MonoBehaviour {
 		else if (myState == States.sheets_0)		{state_sheets_0();}
 //		else if (myState == States.sheets_1)		{state_sheets_1();}
 		else if (myState == States.lock_0)			{state_lock_0();}
-//		else if (myState == States.lock_1)			{state_lock_1();}
+		else if (myState == States.lock_1)			{state_lock_1();}
 		else if (myState == States.mirror)			{state_mirror();}
 		else if (myState == States.cell_mirror)		{state_cell_mirror();}
 //		else if (myState == States.freedom)			{state_freedom();}
@@ -77,6 +77,15 @@ public class TextControler : MonoBehaviour {
 		text.text = "Cell mirror state";
 		if (Input.GetKeyDown(KeyCode.R)) {
 			myState = States.mirror;
+		} else if (Input.GetKeyDown(KeyCode.L)) {
+			myState = States.lock_1;
+		}
+	}
+
+	void state_lock_1 () {
+		text.text = "Lock 1 state";
+		if (Input.GetKeyDown(KeyCode.R)) {
+			myState = States.cell_mirror;
 		}
 	}
 }
