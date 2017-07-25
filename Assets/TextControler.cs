@@ -24,7 +24,7 @@ public class TextControler : MonoBehaviour {
 		else if (myState == States.lock_0)			{state_lock_0();}
 //		else if (myState == States.lock_1)			{state_lock_1();}
 		else if (myState == States.mirror)			{state_mirror();}
-//		else if (myState == States.cell_mirror)		{state_cell_mirror();}
+		else if (myState == States.cell_mirror)		{state_cell_mirror();}
 //		else if (myState == States.freedom)			{state_freedom();}
 	}
 
@@ -66,7 +66,16 @@ public class TextControler : MonoBehaviour {
 		text.text = "You stare at yourself in the mirror for what seems like an hour. " +
 		"In a flash of frustration and blind rage, you punch it, instantly shattering glass shards everyhere. " +
 		"You stare at the mess. You get an idea.";
-		if (Input.GetKeyDown(KeyCode.M)) {
+		if (Input.GetKeyDown(KeyCode.R)) {
+			myState = States.cell;
+		} else if (Input.GetKeyDown(KeyCode.T)) {
+			myState = States.cell_mirror;
+		}
+	}
+
+	void state_cell_mirror () {
+		text.text = "Cell mirror state";
+		if (Input.GetKeyDown(KeyCode.R)) {
 			myState = States.mirror;
 		}
 	}
