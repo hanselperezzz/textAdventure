@@ -41,15 +41,15 @@ public class TextControler : MonoBehaviour {
 		}
 	}
 
-	void state_sheets_0 () {
-		text.text = "You feel tired. The sheets look awful, but you're so tired, it doesn't matter. " +;
-					"You lay down on the bed, close your eyes, and before you know it, you're dreaming " +
-					"of cloud surfing.";
+	// void state_sheets_0 () {
+	// 	text.text = "You feel tired. The sheets look awful, but you're so tired, it doesn't matter. " +;
+	// 				"You lay down on the bed, close your eyes, and before you know it, you're dreaming " +
+	// 				"of cloud surfing.";
 
-		if (Input.GetKeyDown(KeyCode.R)) {
-			myState = States.cell;
-		}
-	}
+	// 	if (Input.GetKeyDown(KeyCode.R)) {
+	// 		myState = States.cell;
+	// 	}
+	// }
 
 //	void state_lock_0 () {
 //		text.text = "Lock!";
