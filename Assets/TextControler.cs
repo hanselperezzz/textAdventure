@@ -117,9 +117,10 @@ public class TextControler : MonoBehaviour {
 		text.text = "You open the door and you see your beedroom. You're unsure about what this means. You notice someone is sleeping in your bed. This " +
 		"makes you a little mad. You walk up to this interloper and are about to shake them. When you get a good look at their face, you recognize it " +
 		"immediately. It's you! It has been a weird couple of hours. You instinctively sit on the bed and lay down into yourself. You have the best night's " +
-		"sleep of your life. No more eating cheese before bed.";
-		if (Input.GetKeyDown(KeyCode.R)) {
-			myState = States.cell_mirror;
+		"sleep of your life. No more eating cheese before bed.\n\n" +
+		"Press C to eat cheese before bed.";
+		if (Input.GetKeyDown(KeyCode.C)) {
+			myState = States.cell;
 		}
 	}
 }
