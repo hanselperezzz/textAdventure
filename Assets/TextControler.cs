@@ -20,12 +20,12 @@ public class TextControler : MonoBehaviour {
 		print (myState);
 		if (myState == States.cell)					{state_cell();}
 		else if (myState == States.sheets_0)		{state_sheets_0();}
-//		else if (myState == States.sheets_1)		{state_sheets_1();}
+		else if (myState == States.sheets_1)		{state_sheets_1();}
 		else if (myState == States.lock_0)			{state_lock_0();}
 		else if (myState == States.lock_1)			{state_lock_1();}
 		else if (myState == States.mirror)			{state_mirror();}
 		else if (myState == States.cell_mirror)		{state_cell_mirror();}
-//		else if (myState == States.freedom)			{state_freedom();}
+		else if (myState == States.freedom)			{state_freedom();}
 	}
 
 	void state_cell () {
@@ -48,9 +48,10 @@ public class TextControler : MonoBehaviour {
 	void state_sheets_0 () {
 		text.text = "You feel tired. The sheets look awful, but you're so tired, it doesn't matter. " +
 					"You lay down on the bed, close your eyes, and before you know it, you're dreaming " +
-					"of cloud surfing.";
+					"of cloud surfing with bears.\n\n" + 
+					"Press G to get out of bed and move on with your life.";
 
-		if (Input.GetKeyDown(KeyCode.R)) {
+		if (Input.GetKeyDown(KeyCode.G)) {
 			myState = States.cell;
 		}
 	}
@@ -79,11 +80,29 @@ public class TextControler : MonoBehaviour {
 			myState = States.mirror;
 		} else if (Input.GetKeyDown(KeyCode.L)) {
 			myState = States.lock_1;
+		} else if (Input.GetKeyDown(KeyCode.S)) {
+			myState = States.sheets_1;
 		}
 	}
 
 	void state_lock_1 () {
 		text.text = "Lock 1 state";
+		if (Input.GetKeyDown(KeyCode.R)) {
+			myState = States.cell_mirror;
+		} else if (Input.GetKeyDown(KeyCode.O)) {
+			myState = States.freedom;
+		}
+	}
+
+		void state_sheets_1 () {
+		text.text = "Sheets 1 state";
+		if (Input.GetKeyDown(KeyCode.R)) {
+			myState = States.cell_mirror;
+		}
+	}
+
+			void state_freedom () {
+		text.text = "Freedom!";
 		if (Input.GetKeyDown(KeyCode.R)) {
 			myState = States.cell_mirror;
 		}
