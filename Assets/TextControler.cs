@@ -7,7 +7,7 @@ public class TextControler : MonoBehaviour {
 	public Text text;
 
 	enum States {cell, mirror, sheets_0, lock_0, cell_mirror, 
-				sheets_1, lock_1, corridor_0
+				sheets_1, lock_1, corridor_0, stairs_0, pushups
 				};
 	private States myState;
 
@@ -28,6 +28,8 @@ public class TextControler : MonoBehaviour {
 		else if (myState == States.mirror)			{mirror();}
 		else if (myState == States.cell_mirror)		{cell_mirror();}
 		else if (myState == States.corridor_0)		{corridor_0();}
+		else if (myState == States.stairs_0)		{stairs_0();}
+		else if (myState == States.pushups)			{pushups();}
 	}
 
 	void cell () {
@@ -60,9 +62,9 @@ public class TextControler : MonoBehaviour {
 
 	void lock_0 () {
 		text.text = "You take the lock in your hand and inspect it. It looks ancient. " +
-		"You look through the rather large keyhole and can see the gears which ulock it. " +
-		"If only you had something sharp with which to manipulate these gears.\n\n" +
-		"Press G to go back and look around your room for something sharp.";
+					"You look through the rather large keyhole and can see the gears which ulock it. " +
+					"If only you had something sharp with which to manipulate these gears.\n\n" +
+					"Press G to go back and look around your room for something sharp.";
 		if (Input.GetKeyDown(KeyCode.G)) {
 			myState = States.cell;
 		}
@@ -70,10 +72,10 @@ public class TextControler : MonoBehaviour {
 
 	void mirror () {
 		text.text = "You stare at yourself in the mirror for what seems like an hour. " +
-		"In a flash of frustration and blind rage, you punch it, instantly shattering glass shards everyhere. " +
-		"You stare at the mess. You get an unusually bright idea... you can use the glass to pick the lock!\n\n" +
-		"Press R to return to your cell and go back to sleep. All this activity has made you tired.\n" +
-		"Press T to take charge of your life for once and open this lock.";
+					"In a flash of frustration and blind rage, you punch it, instantly shattering glass shards everyhere. " +
+					"You stare at the mess. You get an unusually bright idea... you can use the glass to pick the lock!\n\n" +
+					"Press R to return to your cell and go back to sleep. All this activity has made you tired. Press T to " +
+					"take charge of your life for once and open this lock.";
 		if (Input.GetKeyDown(KeyCode.R)) {
 			myState = States.cell;
 		} else if (Input.GetKeyDown(KeyCode.T)) {
@@ -83,9 +85,9 @@ public class TextControler : MonoBehaviour {
 
 	void cell_mirror () {
 		text.text = "You cut your fingers a little, but after about five minutes of moving the lock's gears around with a glass shard, " +
-		"you pop the lock open with an audibly satifying, CUH-LICK sound.\n\n" +
-		"Press B to go back to bed. You seriously deserve a nap after all this action.\n\n" +
-		"Press L to remove the lock and see what lies outside your cell door.";
+					"you pop the lock open with an audibly satifying, CUH-LICK sound.\n\n" +
+					"Press B to go back to bed. You seriously deserve a nap after all this action.\n\n" +
+					"Press L to remove the lock and see what lies outside your cell door.";
 		if (Input.GetKeyDown(KeyCode.R)) {
 			myState = States.mirror;
 		} else if (Input.GetKeyDown(KeyCode.L)) {
@@ -97,10 +99,10 @@ public class TextControler : MonoBehaviour {
 
 	void lock_1 () {
 		text.text = "As quietly as you can, you softly open your rusty cell door. You walk out and look around. Your cell is at the end of " +
-		"a long corridor. All the other inmates are asleep. No one is watching you. There is a door at the end of the corridor. It beckons you. " +
-		"You've never been one to be influenced by anyone. Not even some dumb door. What do you do?\n\n" +
-		"Press G and go to bed because this suspense is overwhelming, you can hardly keep your eyes open. " +
-		"Press O to walk to the door and open it. You promise yourself you'll take a nap as soon as you escape the jail.";
+					"a long corridor. All the other inmates are asleep. No one is watching you. There is a door at the end of the corridor. It beckons you. " +
+					"You've never been one to be influenced by anyone. Not even some dumb door. What do you do?\n\n" +
+					"Press G and go to bed because this suspense is overwhelming, you can hardly keep your eyes open. " +
+					"Press O to walk to the door and open it. You promise yourself you'll take a nap as soon as you escape the jail.";
 		if (Input.GetKeyDown(KeyCode.G)) {
 			myState = States.sheets_1;
 		} else if (Input.GetKeyDown(KeyCode.O)) {
@@ -108,21 +110,40 @@ public class TextControler : MonoBehaviour {
 		}
 	}
 
-		void sheets_1 () {
+	void sheets_1 () {
 		text.text = "Sheets 1 state";
 		if (Input.GetKeyDown(KeyCode.R)) {
 			myState = States.cell_mirror;
 		}
 	}
 
-			void corridor_0 () {
+	void corridor_0 () {
 		text.text = "You open the door and you see your beedroom. You're unsure about what this means. You notice someone is sleeping in your bed. This " +
-		"makes you a little mad. You walk up to this interloper and are about to shake them. When you get a good look at their face, you recognize it " +
-		"immediately. It's you! It has been a weird couple of hours. You instinctively sit on the bed and lay down into yourself. You have the best night's " +
-		"sleep of your life. No more eating cheese before bed.\n\n" +
-		"Press C to eat cheese before bed.";
-		if (Input.GetKeyDown(KeyCode.C)) {
-			myState = States.cell;
+					"makes you a little mad. You walk up to this interloper and are about to shake them. When you get a good look at their face, you recognize it " +
+					"immediately. It's you! It has been a weird couple of hours. You instinctively sit on the bed and lay down into yourself. " +
+					"No more eating cheese before bed.\n\n" +
+					"Press B to read a book, press P do pushups, press C to eat cheese before bed.";
+		if (Input.GetKeyDown(KeyCode.B)) {
+			myState = States.stairs_0;
+		} else if (Input.GetKeyDown(KeyCode.P)) {
+			myState = States.pushups;
+		}
+	}
+
+	void stairs_0 () {
+		text.text = "You can't sleep after that bizzare dream. However, it is the most fun you've had in a long time. You get out of bed and read a " +
+					"little Borges to keep the momentum going.\n\n" +
+					"You read until your eyes get heavy. Screw leaving the apartment today... you're going back to bed. Press B to return to your nice warm bed.";
+		if (Input.GetKeyDown(KeyCode.B)) {
+			myState = States.corridor_0;
+		}
+	}
+
+		void pushups () {
+		text.text = "You can't sleep. Maybe you should do some pushups? Sure. You get out of bed and do twenty pushups. Great. Now you're wide awake." + 
+					"Press B to stop messing around and give this sleeping thing another shot.";
+		if (Input.GetKeyDown(KeyCode.B)) {
+			myState = States.corridor_0;
 		}
 	}
 }
