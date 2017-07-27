@@ -7,7 +7,8 @@ public class TextControler : MonoBehaviour {
 	public Text text;
 
 	enum States {cell, mirror, sheets_0, lock_0, cell_mirror, 
-				sheets_1, lock_1, corridor_0, stairs_0, pushups
+				sheets_1, lock_1, corridor_0, book, pushups,
+				back_in_bed, floor, adventure
 				};
 	private States myState;
 
@@ -28,8 +29,11 @@ public class TextControler : MonoBehaviour {
 		else if (myState == States.mirror)			{mirror();}
 		else if (myState == States.cell_mirror)		{cell_mirror();}
 		else if (myState == States.corridor_0)		{corridor_0();}
-		else if (myState == States.stairs_0)		{stairs_0();}
+		else if (myState == States.book)			{book();}
 		else if (myState == States.pushups)			{pushups();}
+		else if (myState == States.back_in_bed)		{back_in_bed();}
+		else if (myState == States.floor)			{floor();}
+		else if (myState == States.adventure)		{adventure();}
 	}
 
 	void cell () {
@@ -118,32 +122,64 @@ public class TextControler : MonoBehaviour {
 	}
 
 	void corridor_0 () {
-		text.text = "You open the door and you see your beedroom. You're unsure about what this means. You notice someone is sleeping in your bed. This " +
+		text.text = "You open the door and you see your bedroom. You're unsure about what this means. You notice someone is sleeping in your bed. This " +
 					"makes you a little mad. You walk up to this interloper and are about to shake them. When you get a good look at their face, you recognize it " +
 					"immediately. It's you! It has been a weird couple of hours. You instinctively sit on the bed and lay down into yourself. " +
 					"No more eating cheese before bed.\n\n" +
 					"Press B to read a book, press P do pushups, press C to eat cheese before bed.";
 		if (Input.GetKeyDown(KeyCode.B)) {
-			myState = States.stairs_0;
+			myState = States.book;
 		} else if (Input.GetKeyDown(KeyCode.P)) {
 			myState = States.pushups;
+		} else if (Input.GetKeyDown(KeyCode.C)) {
+			myState = States.floor;
 		}
 	}
 
-	void stairs_0 () {
+	void book () {
 		text.text = "You can't sleep after that bizzare dream. However, it is the most fun you've had in a long time. You get out of bed and read a " +
 					"little Borges to keep the momentum going.\n\n" +
 					"You read until your eyes get heavy. Screw leaving the apartment today... you're going back to bed. Press B to return to your nice warm bed.";
 		if (Input.GetKeyDown(KeyCode.B)) {
-			myState = States.corridor_0;
+			myState = States.back_in_bed;
 		}
+
 	}
 
 		void pushups () {
-		text.text = "You can't sleep. Maybe you should do some pushups? Sure. You get out of bed and do twenty pushups. Great. Now you're wide awake." + 
+		text.text = "You can't sleep. Maybe you should do some pushups? Sure. You get out of bed and do twenty pushups. Great. Now you're wide awake.\n\n" + 
 					"Press B to stop messing around and give this sleeping thing another shot.";
 		if (Input.GetKeyDown(KeyCode.B)) {
-			myState = States.corridor_0;
+			myState = States.back_in_bed;
+		}
+	}
+
+		void back_in_bed () {
+		text.text = "You return to bed and shut your eyes. You wake up after an hour or so. You sit up in bed and wonder about your next move.\n\n" +
+					"Press B to read a book, press P do pushups, press C to eat some cheese.";
+		if (Input.GetKeyDown(KeyCode.B)) {
+			myState = States.book;
+		} else if (Input.GetKeyDown(KeyCode.P)) {
+			myState = States.pushups;
+		} else if (Input.GetKeyDown(KeyCode.C)) {
+			myState = States.floor;
+		}
+	}
+
+		void floor () {
+		text.text = "The cheese is too appealing. You go to your mini fridge and take a nip from your private stash.\n\n" + 
+					"Press B to go back to bed and count sheep, press F to move forward with your next adventure.";
+		if (Input.GetKeyDown(KeyCode.B)) {
+			myState = States.back_in_bed;
+		} else if (Input.GetKeyDown(KeyCode.F)) {
+			myState = States.adventure;
+		}
+	}
+
+		void adventure () {
+		text.text = "You move towards the adventure.";
+		if (Input.GetKeyDown(KeyCode.B)) {
+			myState = States.back_in_bed;
 		}
 	}
 }
