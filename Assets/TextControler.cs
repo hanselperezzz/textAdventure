@@ -8,7 +8,8 @@ public class TextControler : MonoBehaviour {
 
 	enum States {cell, mirror, sheets_0, lock_0, cell_mirror, 
 				sheets_1, lock_1, corridor_0, book, pushups,
-				back_in_bed, floor, adventure
+				back_in_bed, floor, adventure, unknown,
+				shut_eye
 				};
 	private States myState;
 
@@ -34,6 +35,8 @@ public class TextControler : MonoBehaviour {
 		else if (myState == States.back_in_bed)		{back_in_bed();}
 		else if (myState == States.floor)			{floor();}
 		else if (myState == States.adventure)		{adventure();}
+		else if (myState == States.unknown)			{unknown();}
+		else if (myState == States.shut_eye)		{shut_eye();}
 	}
 
 	void cell () {
@@ -90,7 +93,7 @@ public class TextControler : MonoBehaviour {
 	void cell_mirror () {
 		text.text = "You cut your fingers a little, but after about five minutes of moving the lock's gears around with a glass shard, " +
 					"you pop the lock open with an audibly satifying, CUH-LICK sound.\n\n" +
-					"Press B to go back to bed. You seriously deserve a nap after all this action.\n\n" +
+					"Press B to go back to bed. You seriously deserve a nap after all this action. " +
 					"Press L to remove the lock and see what lies outside your cell door.";
 		if (Input.GetKeyDown(KeyCode.R)) {
 			myState = States.mirror;
@@ -177,9 +180,28 @@ public class TextControler : MonoBehaviour {
 	}
 
 		void adventure () {
-		text.text = "You move towards the adventure.";
+		text.text = "Cheese acquires magical properties at bed time. You love cheese. You love magic, and you love bed time. Bring on the adventure.\n\n" +
+					"Never mind, press B and go back to bed, or press U to move forward into the unknown.";
 		if (Input.GetKeyDown(KeyCode.B)) {
 			myState = States.back_in_bed;
+		} else if (Input.GetKeyDown(KeyCode.U)) {
+			myState = States.unknown;
 		}
 	}
+
+			void unknown () {
+		text.text = "The walls fall away and you are surrounded by black. The floor boards individually bend back and dissapear. The cieling fades away. " +
+					"You are surrounded by an inky black.\n\n" + 
+					"It's so dark. Might as well get some sleep. Press S to get some shut eye.";
+		if (Input.GetKeyDown(KeyCode.S)) {
+			myState = States.shut_eye;
+		} 
+	}
+
+				void shut_eye () {
+		text.text = "You have never experienced such complete silence before. This netherworld you find yourself in is perfect for catching up on some much " +
+					"deserved rest.\n\n" + 
+					"Congratulations. You have achieved the best sleep in the Universe. You can never tell anyone about it, but that's okay. No one would " + 
+					"believe you, any way.\n\n" + "THE END";
+ 	}
 }
